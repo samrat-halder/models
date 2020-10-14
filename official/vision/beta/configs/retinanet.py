@@ -18,11 +18,10 @@
 import os
 from typing import List, Optional
 import dataclasses
-
+from official.core import config_definitions as cfg
 from official.core import exp_factory
 from official.modeling import hyperparams
 from official.modeling import optimization
-from official.modeling.hyperparams import config_definitions as cfg
 from official.vision.beta.configs import backbones
 from official.vision.beta.configs import common
 from official.vision.beta.configs import decoders
@@ -130,7 +129,7 @@ class RetinaNetTask(cfg.TaskConfig):
   init_checkpoint_modules: str = 'all'  # all or backbone
   annotation_file: Optional[str] = None
   gradient_clip_norm: float = 0.0
-  per_category_metrics = False
+  per_category_metrics: bool = False
 
 
 @exp_factory.register_config_factory('retinanet')

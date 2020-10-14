@@ -20,9 +20,9 @@ import numpy as np
 import tensorflow as tf
 
 from official.core import base_task
+from official.core import config_definitions as cfg
 from official.core import exp_factory
 from official.core import task_factory
-from official.modeling.hyperparams import config_definitions as cfg
 
 
 class MockModel(tf.keras.Model):
@@ -46,8 +46,8 @@ class MockTaskConfig(cfg.TaskConfig):
 class MockTask(base_task.Task):
   """Mock task object for testing."""
 
-  def __init__(self, params=None, logging_dir=None):
-    super().__init__(params=params, logging_dir=logging_dir)
+  def __init__(self, params=None, logging_dir=None, name=None):
+    super().__init__(params=params, logging_dir=logging_dir, name=name)
 
   def build_model(self, *arg, **kwargs):
     inputs = tf.keras.layers.Input(shape=(2,), name="random", dtype=tf.float32)
